@@ -6,7 +6,7 @@ import disnake
 # Bot Data
 server_title = "CSUF Minecraft World"
 gabes_server = "172.88.97.100:25565"
-token = ''
+token = 'MTA4MTEzMDUwMjk1OTkyMzIwMQ.GvwPBQ.fONA2V_xA6Rpwf5_m_MnreS9xmSlpHNUl84SQ0'
 server_id = 1081056227158663258
 ip = '172.88.97.100'
 title_link = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
@@ -16,16 +16,9 @@ msg_cache = []
 # Bot Dependencies 
 command_sync_flags = commands.CommandSyncFlags.default()
 command_sync_flags.sync_commands_debug = True
-bot = commands.Bot(
-    command_prefix='!',
-    command_sync_flags=command_sync_flags,
-    test_guilds=[server_id]
-)
+bot = commands.Bot(command_prefix='!', command_sync_flags=command_sync_flags, test_guilds=[server_id])
 def getServer():
     return JavaServer.lookup("172.88.97.100:25565", timeout=6)
-def writeId(msgid : int):
-    with open('msg_chace.txt','a') as f:
-        f.write(str(msgid) + '\n')
 def createEmbed(version, player_count, ping, timestamp):
     return  {
       "type": "rich",
@@ -38,7 +31,7 @@ def createEmbed(version, player_count, ping, timestamp):
           "value": ip
         },
         {
-          "name": "Version:",
+            "name": "Version:",
           "value": version
         },
         {
@@ -102,7 +95,7 @@ async def status(inter, get_players: bool = commands.Param(default=False, choice
     messages = [(await channel.send(embed=embed)).id]
     # Check for player list embed, store in cache if necessary
     if get_players:
-        if status.raw['players']['online'] > 0:
+        if str(status.raw['players']['online']) != '0':
             player_list = status.raw["players"]["sample"]
             messages.append((await channel.send(embed=disnake.Embed.from_dict(playerListEmbed(player_list, str(status.raw['players']['online']) + '/' + str(status.raw['players']['max']), datetime.now().strftime("%I:%M %p"))))).id)
     # Clear old status messages
