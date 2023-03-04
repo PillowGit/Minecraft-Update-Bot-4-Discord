@@ -6,7 +6,7 @@ import disnake
 # Bot Data
 server_title = "CSUF Minecraft World"
 gabes_server = "172.88.97.100:25565"
-token = 'MTA4MTEzMDUwMjk1OTkyMzIwMQ.GZIiqK.562l2_5hxFt8iCrHRRxTfMuraKU3gDsBni2IFw'
+token = ''
 server_id = 1081056227158663258
 ip = '172.88.97.100'
 title_link = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
